@@ -1,0 +1,36 @@
+{
+  "connection": "default",
+  "collectionName": "authors",
+  "info": {
+    "name": "author",
+    "description": "List of Authors"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": [
+      "created_at",
+      "updated_at"
+    ],
+    "comment": ""
+  },
+  "attributes": {
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "user": {
+      "model": "user",
+      "via": "author",
+      "plugin": "users-permissions"
+    },
+    "posts": {
+      "collection": "post",
+      "via": "author"
+    }
+  }
+}
