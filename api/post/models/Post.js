@@ -4,6 +4,7 @@
  * Lifecycle callbacks for the `Post` model.
  */
 
+const axios = require("axios");
 module.exports = {
   // Before saving a value.
   // Fired before an `insert` or `update` query.
@@ -41,4 +42,27 @@ module.exports = {
   // After destroying a value.
   // Fired after a `delete` query.
   // afterDestroy: async (model, attrs, options) => {}
+  afterCreate: async entry => {
+    axios
+      .post(strapi.config.currentEnvironment.staticWebsiteBuildURL, entry)
+      .catch(() => {
+        // Ignore
+      });
+  },
+
+  afterUpdate: async entry => {
+    axios
+      .post(strapi.config.currentEnvironment.staticWebsiteBuildURL, entry)
+      .catch(() => {
+        // Ignore
+      });
+  },
+
+  afterDestroy: async entry => {
+    axios
+      .post(strapi.config.currentEnvironment.staticWebsiteBuildURL, entry)
+      .catch(() => {
+        // Ignore
+      });
+  }
 };
